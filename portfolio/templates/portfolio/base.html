@@ -9,43 +9,57 @@
     {% else %}
       <title>julian roberts</title>
     {% endif %}
+    <!-- favicons -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'portfolio/img/logo.png' %}"/>
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- font awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- custom css -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/style.css' %}">
-
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="#">julian roberts</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item"><a class="nav-link" href="#">home</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">about</a></li>
-              <li class="nav-item"><a class="nav-link" href="#">contact</a></li>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
+        <div class="container"> <a class="navbar-brand" href="#"><img class="" src="{% static 'portfolio/img/logo.png' %}" alt="" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+            <li class="nav-item"> <a class="nav-link {% if title == 'home' %}active{% endif %}" href="{% url 'portfolio-home' %}">about</a> </li>
+            <li class="nav-item"> <a class="nav-link {% if title == 'marathon' %}active{% endif %}" href="{% url 'portfolio-marathon' %}">marathon</a> </li>
+
+          </ul>
+          <div class="d-flex ms-auto">
+            <ul>
+              <li>
+                <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
+                  <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
+                </a>
+              </li>
+              <li>
+                <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
+                  <span class="social-icon social-github"><i class="fa fa-github"></i></span>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
-      </nav>
-    </header>
-    <main>
-      <div class="container">
-        {% block content %}{% endblock %}
       </div>
-    </main>
-
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">email: <i>julian dot roberts dot one at gmail dot com</i></span>
-      </div>
-    </footer>
-    
-    <!-- bootstrap js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  </body>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container"></div>
+  </footer>
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
 </html>
