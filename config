@@ -1,0 +1,7 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "jrnet"]
+	url = jroberts@192.168.0.2:/home/jroberts/jrnet
+	fetch = +refs/heads/*:refs/remotes/jrnet/*
