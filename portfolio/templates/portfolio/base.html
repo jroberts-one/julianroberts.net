@@ -23,43 +23,47 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
-        <div class="container"> <a class="navbar-brand" href="#"><img class="" src="{% static 'portfolio/img/logo.png' %}" alt="" /></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-            <li class="nav-item"> <a class="nav-link {% if title == 'home' %}active{% endif %}" href="{% url 'portfolio-home' %}">about</a> </li>
-            <li class="nav-item"> <a class="nav-link {% if title == 'marathon' %}active{% endif %}" href="{% url 'portfolio-marathon' %}">marathon</a> </li>
-
-          </ul>
-          <div class="d-flex ms-auto">
-            <ul>
-              <li>
-                <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
-                  <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
-                </a>
+        <div class="container">
+          <a class="navbar-brand" href="{% url 'portfolio-home' %}"><img class="" src="{% static 'portfolio/img/logo.png' %}" alt="" /></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link {% if title == 'home' %}active{% endif %}"  href="{% url 'portfolio-home' %}">about</a>
               </li>
-              <li>
-                <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
-                  <span class="social-icon social-github"><i class="fa fa-github"></i></span>
-                </a>
+              <li class="nav-item">
+                <a class="nav-link {% if title == 'marathon' %}active{% endif %}"  href="{% url 'portfolio-marathon' %}">marathon</a>
               </li>
             </ul>
+            <div class="d-flex ms-auto">
+              <ul>
+                <li>
+                  <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
+                    <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
+                    <span class="social-icon social-github"><i class="fa fa-github"></i></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        {% block content %}{% endblock %}
       </div>
-    </nav>
-  </header>
-  <main>
-    <div class="container">
-      {% block content %}{% endblock %}
-    </div>
-  </main>
-  <footer class="footer">
-    <div class="container"></div>
-  </footer>
-  <!-- bootstrap js -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-</body>
+    </main>
+    <footer class="footer">
+      <div class="container"></div>
+    </footer>
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  </body>
 </html>
