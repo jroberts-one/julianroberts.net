@@ -3,50 +3,226 @@
 {% block content %}
     <div class="container">
         <h1>Rock 'n' Roll San Antonio – 2021</h1>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Week #</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Monday</th>
-                        <th scope="col">Tuesday</th>
-                        <th scope="col">Wednesday</th>
-                        <th scope="col">Thursday</th>
-                        <th scope="col">Friday</th>
-                        <th scope="col">Saturday</th>
-                        <th scope="col">Sunday</th>
-                        <th scope="col">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th class="week-num" scope="row">12</th>
-                        <td class="date">08/30/2021</td>
-                        <td class="mon">0</td>
-                        <td class="tues">0</td>
-                        <td class="wed">0</td>
-                        <td class="thur">0</td>
-                        <td class="fri">0</td>
-                        <td class="sat">0</td>
-                        <td class="sun">0</td>
-                        <td class="total"></td>
-                    </tr>
-                    <tr>
-                        <th class="week-num" scope="row">11</th>
-                        <td class="date">09/6/2021</td>
-                        <td class="mon">0</td>
-                        <td class="tues">0</td>
-                        <td class="wed">0</td>
-                        <td class="thur">0</td>
-                        <td class="fri">0</td>
-                        <td class="sat">0</td>
-                        <td class="sun">0</td>
-                        <td class="total"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <br>
+        <div class="row">
+            <div class="col-3">
+                <div class="form-floating">
+                    <select class="form-select" id="unitSelect" aria-label="unit select">
+                        <option selected value="imperial">miles</option>
+                        <option value="metric">kilometers</option>
+                    </select>
+                    <label for="unitSelect">&nbsp;units</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table id="trainingTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Date</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>A</td>
+                                <td>08/30</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance genAerobic">8</span></td>
+                                <td><span class="distance recv">3</span></td>
+                                <td><span class="distance genAerobic">9</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recv">5</span></td>
+                                <td><span class="distance mPace">13</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>B</td>
+                                <td>09/06</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance genAerobic">8</span></td>
+                                <td><span class="distance recv">3</span></td>
+                                <td><span class="distance genAerobic">9</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recv">5</span></td>
+                                <td><span class="distance mPace">13</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">Endurance</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>09/13</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance genAerobic">8</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance genAerobic">9</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recv">5</span></td>
+                                <td><span class="distance mPace">13</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>09/20</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance medLongRun">8</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance lactateThres">9</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recv">5</span></td>
+                                <td><span class="distance mPace">13</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>09/27</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>10/04</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">LT + Endurance</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>10/11</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>10/18</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>10/25</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">Race Preparation</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>11/01</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance vMax">8</span></td>
+                                <td><span class="distance medLongRun">11</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recvSpeed">4</span></td>
+                                <td><span class="distance tuneUp">13</span></td>
+                                <td><span class="distance longRun">17</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>11/08</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recv">7</span></td>
+                                <td><span class="distance vMax">10</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recvSpeed">11</span></td>
+                                <td><span class="distance tuneUp">4</span></td>
+                                <td><span class="distance longRun">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>11/15</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance vMax">8</span></td>
+                                <td><span class="distance recv">6</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recvSpeed">4</span></td>
+                                <td><span class="distance tuneUp">11</span></td>
+                                <td><span class="distance longRun">16</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">Taper and Race</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>11/22</td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recvSpeed">7</span></td>
+                                <td><span class="distance vMax">8</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance recvSpeed">5</span></td>
+                                <td><span class="distance restCTrain">0</span></td>
+                                <td><span class="distance medLongRun">12</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>11/29</td>
+                                <td><span class="distance rest">0</span></td>
+                                <td><span class="distance recv">6</span></td>
+                                <td><span class="distance mPace">7</span></td>
+                                <td><span class="distance rest">0</span></td>
+                                <td><span class="distance recvSpeed">5</span></td>
+                                <td><span class="distance recv">4</span></td>
+                                <td class="goal">marathon</td>
+                                <td class="total"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     <br><br>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'portfolio/js/marathon.js' %}"></script>
 {% endblock content %}
