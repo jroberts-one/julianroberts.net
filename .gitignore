@@ -130,7 +130,6 @@ db.sqlite3
 #
 jrnet/settings.py
 *~
-static/
 media/
 secret_key.txt
 jrnet_uwsgi.ini
