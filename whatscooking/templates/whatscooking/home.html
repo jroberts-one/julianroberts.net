@@ -1,0 +1,15 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block content %}
+    <h1>Recipe List</h1>
+        {% for recipe in recipes %}
+          <div class="">
+            <div class="">
+              <a class="">{{ recipe.author }}</a>
+              <small class="text-muted">{{ recipe.date_recipeed|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="" >{{ recipe.name }}</a></h2>
+            <p class="">{{ recipe.description }}</p>
+          </div>
+    {% endfor %}
+{% endblock content %}
