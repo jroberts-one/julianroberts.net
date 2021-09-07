@@ -18,10 +18,14 @@ body {
     }
 }
 
-ul {
+ul#navbarList {
     list-style: none;
     display: flex;
     margin-bottom: 0
+}
+
+.asteriskField {
+    display: none;
 }
 
 /* navbar
@@ -37,7 +41,7 @@ nav  {
 .navbar-brand img {
   height: 50px;
   float: left;
-  margin-right: 7px;
+  margin-right: 30px;
 }
 
 /* social media icons
@@ -75,6 +79,9 @@ nav  {
 }
 
 
+/*
+-------------------------------------------------- */
+
 
 .card-box {
     border: 1px solid #ddd;
@@ -107,3 +114,5 @@ nav  {
 .embed-responsive .card-img-top {
     object-fit: cover;
 }
+
+
