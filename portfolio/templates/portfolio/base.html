@@ -19,12 +19,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/style.css' %}">
-
-
     <!-- bootstrap js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <!-- jquery cdn -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KV414LES4P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KV414LES4P');
+    </script>
   </head>
   <body>
     <header>
@@ -33,20 +39,18 @@
           <div class="navbar-brand">
             <a href="{% url 'portfolio-home' %}"><img class="" src="{% static 'portfolio/img/logo.png' %}" alt="" /></a>
             <div class="d-flex my-2 ms-auto">
-                  <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
-                    <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
-                  </a>
-                  <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
-                    <span class="social-icon social-github"><i class="fa fa-github"></i></span>
-                  </a>
+              <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
+                <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
+              </a>
+              <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
+                <span class="social-icon social-github"><i class="fa fa-github"></i></span>
+              </a>
             </div>
           </div>
-
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-
             {% if user.is_authenticated %}
               <ul id="navbarList" class="navbar-nav mx-auto">
                 <li class="nav-item">
@@ -61,33 +65,28 @@
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'profile' %}active{% endif %}" href="{% url 'profile' %}">profile</a>
                 </li>
-            </ul>
-            <ul id="navbarList1" class="navbar-nav ms-auto">
+              </ul>
+              <ul id="navbarList1" class="navbar-nav ms-auto">
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'logout' %}active{% endif %}" href="{% url 'logout' %}">logout</a>
                 </li>
-            </ul>
+              </ul>
             {% else %}
-
-            <ul id="navbarList2" class="navbar-nav ms-auto">
+              <ul id="navbarList2" class="navbar-nav ms-auto">
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'login' %}active{% endif %}" href="{% url 'login' %}">login</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'register' %}active{% endif %}" href="{% url 'register' %}">register</a>
                 </li>
-            </ul>
-
+              </ul>
             {% endif %}
           </div>
         </div>
       </nav>
     </header>
-
-
     <main>
       <div class="container">
-
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
@@ -98,10 +97,8 @@
         {% block content %}{% endblock %}
       </div>
     </main>
-
     <footer class="footer">
       <div class="container"></div>
     </footer>
-
   </body>
 </html>
