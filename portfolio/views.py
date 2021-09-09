@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import (
+    TemplateView
+)
 
-def home(request):
-    return render(request, 'portfolio/home.html', {'title': 'home'})
 
-def marathon(request):
-    return render(request, 'portfolio/marathon.html', {'title': 'marathon'})
+class HomeView(TemplateView):
+    template_name = 'portfolio/home.html'
+
+
+class MarathonView(LoginRequiredMixin, TemplateView):
+    template_name = 'portfolio/marathon.html'
