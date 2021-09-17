@@ -45,12 +45,14 @@
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'contact' %}active{% endif %}"  href="{% url 'portfolio-contact' %}">contact</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link {% if title == 'whatscooking' %}active{% endif %}"  href="{% url 'whatscooking-home' %}">what's cooking?</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {% if title == 'marathon' %}active{% endif %}"  href="{% url 'portfolio-marathon' %}">marathon</a>
-                </li>
+                {% if user.is_superuser %}
+                  <li class="nav-item">
+                    <a class="nav-link {% if title == 'whatscooking' %}active{% endif %}"  href="{% url 'whatscooking-home' %}">what's cooking?</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link {% if title == 'marathon' %}active{% endif %}"  href="{% url 'portfolio-marathon' %}">marathon</a>
+                  </li>
+                {% endif %}
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'profile' %}active{% endif %}" href="{% url 'profile' %}">profile</a>
                 </li>
@@ -63,11 +65,17 @@
             {% else %}
               <ul id="navbarList2" class="navbar-nav ms-auto">
                 <li class="nav-item">
+                  <a class="nav-link {% if title == 'about' %}active{% endif %}"  href="{% url 'portfolio-about' %}">about</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link {% if title == 'contact' %}active{% endif %}"  href="{% url 'portfolio-contact' %}">contact</a>
+                </li>
+<!--                 <li class="nav-item">
                   <a class="nav-link {% if title == 'login' %}active{% endif %}" href="{% url 'login' %}">login</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'register' %}active{% endif %}" href="{% url 'register' %}">register</a>
-                </li>
+                </li> -->
               </ul>
             {% endif %}
           </div>

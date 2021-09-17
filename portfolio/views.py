@@ -1,5 +1,5 @@
 from crispy_bootstrap5.bootstrap5 import FloatingField
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     TemplateView,
     ListView,
@@ -12,16 +12,12 @@ from django.core.mail import send_mail
 from django.contrib import messages
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
+class HomeView(TemplateView):
     template_name = 'portfolio/home.html'
 
 
-class AboutView(LoginRequiredMixin, TemplateView):
+class AboutView(TemplateView):
     template_name = 'portfolio/about.html'
-
-
-class MarathonView(LoginRequiredMixin, TemplateView):
-    template_name = 'portfolio/marathon.html'
 
 
 class ContactFormView(FormView):
@@ -46,3 +42,10 @@ class ContactFormView(FormView):
         messages.add_message(self.request, messages.SUCCESS,
                              'your message has been sent!')
         return super(ContactFormView, self).form_valid(form)
+
+
+class MarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+    template_name = 'portfolio/marathon.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
