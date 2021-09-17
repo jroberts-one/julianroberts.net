@@ -1,8 +1,8 @@
 {% extends "portfolio/base.html" %}
 {% load static %}
 {% block content %}
-  <h1>Recipe List</h1>
-  <a class="" href="{% url 'recipe-create' %}">New Recipe</a>
+  <h1>recipe list</h1>
+  <a class="" href="{% url 'recipe-create' %}">add new recipe</a>
   <br><br>
   {% for recipe in recipes %}
     <div class="">

@@ -12,14 +12,22 @@ from django.core.mail import send_mail
 from django.contrib import messages
 
 
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'portfolio/home.html'
+
+
+class AboutView(LoginRequiredMixin, TemplateView):
+    template_name = 'portfolio/about.html'
+
+
 class MarathonView(LoginRequiredMixin, TemplateView):
     template_name = 'portfolio/marathon.html'
 
 
 class ContactFormView(FormView):
-    template_name = 'portfolio/home.html'
+    template_name = 'portfolio/contact.html'
     form_class = ContactForm
-    success_url = '/'
+    success_url = '/contact'
 
     def form_valid(self, form):
         print('ContactFormView – form_valid() called')

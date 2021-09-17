@@ -1,0 +1,10 @@
+{% extends 'portfolio/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <div class="form-box">
+        <h1>send me an email</h1>
+        <br>
+        {% crispy form %}
+    </div>
+{% endblock %}

@@ -4,27 +4,21 @@
 {% block content %}
     <div class="p-5 my-8 bg-light rounded-3">
         <div class="container py-5">
-            <h1 class="display-5 fw-bold">hi there!</h1>
-            <p class="col-md-12 fs-4">
-                my name is julian roberts, and i am a software engineer located in denver, co.
-            </p>
-            <p class="col-md-12 fs-4">
-                this website is currently under construction and will be available soon.
-            </p>
-            <p class="col-md-12 fs-4">
-                sorry for any inconvenience, and hope to see you again soon!
-            </p>
-            <p class="col-md-12 fs-4">
-                under construction since: august 26th 2021
-            </p>
-            <a href="{% static 'portfolio/pdf/resume.pdf' %}" download="resume.pdf">
-                <button class="btn btn-primary btn-lg my-3" type="button">download resume</button>
-            </a>
+            <div class="content-container">
+                <div class="portfolio-text-container">
+                    <h1>hi, my name is julian roberts</h1>
+                    <h3>i am a software engineer and data scienist</h3>
+                    <p>located in denver, co</p>
+                    <div class="social-media-container">
+                        <i class="fa fa-linkedin-square"></i>
+                        <i class="fa fa-github-square"></i>
+                    </div>
+                </div>
+                <div class="portfolio-image-container">
+                    <img class="img-fluid" src="{% static 'portfolio/img/logo.png' %}">
+                </div>
+            </div>
         </div>
     </div>
-    <div class="container py-5">
-        <h1>send me an email</h1>
-        <br>
-        {% crispy form %}
-    </div>
+    <script type="text/javascript" src="{% static 'portfolio/js/landing.js' %}"></script>
 {% endblock %}

@@ -14,9 +14,9 @@ class MeasurementQuantity(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
+    description = models.TextField()
     cook_time = models.CharField(max_length=20, null=True)
     serving_size = models.CharField(max_length=20, null=True)
-    description = models.TextField()
     directions = models.TextField(null=True)
     date_created = models.DateTimeField(default=timezone.now)
     last_modified = models.DateTimeField(auto_now=True)
