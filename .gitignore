@@ -120,7 +120,6 @@ dmypy.json
 
 # Database
 *.sqlite3
-migrations/
 db.sqlite3
 
 # Other
