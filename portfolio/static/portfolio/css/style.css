@@ -20,7 +20,7 @@ body{
 }
 
 
-ul#navbarList {
+ul #navbarList {
     list-style: none;
     display: flex;
     margin-bottom: 0
@@ -59,26 +59,24 @@ a {
   color: #111 !important;
 }
 
-.portfolio-image-container {}
-
-.portfolio-image-container img{
+.portfolio-image-container img {
   width: 300px;
+  border-radius: 50%;
+  /*border: 5px solid #555;*/
 }
 
 .portfolio-text-container h1{
-  text-transform: lowercase;
   font-size: 46px;
   line-height: 1.1em;
 }
 
-.portfolio-text-container h3{
-  text-transform: lowercase;
+.portfolio-text-container h3 {
   font-size: 32px;
   color: #2F4858;
 }
 
-.portfolio-text-container p{
-  text-align: justify;
+.portfolio-text-container p {
+  font-size: 1.50rem;
   font-weight: 600;
   color: #2F4858;
 }
@@ -86,19 +84,6 @@ a {
 
 /* social icons
 -------------------------------------------------- */
-
-.social-media-container > .fa{
-  margin-top: 10px;
-  font-size: 30px;
-  margin-right: 20px;
-  color: #2F4858;
-  cursor: pointer;
-  transition: transform 0.5s;
-}
-
-.social-media-container > .fa:hover{
-  transform: translateY(-3px);
-}
 
 .social-icon {
     height: 30px;

@@ -1,3 +1,10 @@
+gsap.from(".navbar > .container > .navbar-brand > .logo", 0.8, {
+  delay: 0.2,
+  opacity: 0,
+  x: -20,
+  ease: Expo.easeInOut
+});
+
 gsap.from(".logo > a", 0.9, {
   delay: 0.2,
   opacity: 0,
