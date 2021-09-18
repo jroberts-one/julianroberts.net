@@ -21,7 +21,7 @@ gsap.from("img", 2.2, {
   ease: Power4.easeInOut
 });
 
-gsap.from(".social-media-container > *", 1, {
+gsap.from(".social-media-container > div > a", 1, {
   delay: 1.2,
   opacity: 0,
   stagger: 0.2,

@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="portfolio-image-container">
-                        <img class="img-fluid" src="{% static 'portfolio/img/logo.png' %}">
+                        <img class="img-fluid img-fluid" src="{% static 'portfolio/img/logo.png' %}" alt="logo">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -16,8 +16,14 @@
                         <h3>i am a data scienist and software engineer</h3>
                         <p>located in denver, co</p>
                         <div class="social-media-container">
-                            <i class="fa fa-linkedin-square"></i>
-                            <i class="fa fa-github-square"></i>
+                            <div class="d-flex my-2 ms-auto">
+                                <a target="_blank" class="text-decoration-none" href="https://www.linkedin.com/in/julian-roberts-one">
+                                    <span class="social-icon social-linkedin"><i class="fa fa-linkedin"></i></span>
+                                </a>
+                                <a target="_blank" class="text-decoration-none" href="https://github.com/jroberts-one">
+                                    <span class="social-icon social-github"><i class="fa fa-github"></i></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

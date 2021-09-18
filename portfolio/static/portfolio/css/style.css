@@ -100,22 +100,23 @@ a {
   transform: translateY(-3px);
 }
 
+.social-icon {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 7px;
+    margin-right: 11px;
+    cursor: pointer
+}
 
-/* @media
--------------------------------------------------- */
+.social-linkedin {
+    background-color: #0077B5
+}
 
-@media screen and (max-width: 760px) {
-  .portfolio-text-container,
-  .portfolio-image-container{
-    width: 100%;
-  }
-  .nav-link > a{
-    padding: 30px;
-    margin: 0px;
-    width: 100%;
-  }
-  .nav-link > a:hover{
-    background: #38EF7D;
-  }
-
+.social-github {
+    background-color: #333
 }
