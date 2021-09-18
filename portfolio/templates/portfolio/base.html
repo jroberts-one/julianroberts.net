@@ -28,8 +28,8 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light">
         <div class="container">
-          <div class="navbar-brand mx-20">
-            <div class="logo">
+          <div class="navbar-brand">
+            <div id="logo" class="logo">
               <a href="{% url 'portfolio-home' %}"><h1><i>JR</i></h1></a>
             </div>
           </div>
@@ -70,12 +70,6 @@
                 <li class="nav-item">
                   <a class="nav-link {% if title == 'contact' %}active{% endif %}"  href="{% url 'portfolio-contact' %}">contact</a>
                 </li>
-<!--                 <li class="nav-item">
-                  <a class="nav-link {% if title == 'login' %}active{% endif %}" href="{% url 'login' %}">login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link {% if title == 'register' %}active{% endif %}" href="{% url 'register' %}">register</a>
-                </li> -->
               </ul>
             {% endif %}
           </div>
@@ -84,14 +78,18 @@
     </header>
     <main>
       <div class="container">
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-              {{ message }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          {% endfor %}
-        {% endif %}
+        <div class="row">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+      </div>
+      <div class="container">
         {% block content %}{% endblock %}
       </div>
     </main>

@@ -37,19 +37,9 @@ a {
 /* navbar
 -------------------------------------------------- */
 
-
 .logo h1{
   color: #2F4858;
 }
-
-
-#nav-container{
-  position: relative;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.09);
-  height: 100px;
-}
-
 
 .nav-link > a{
   text-decoration: none;
@@ -61,60 +51,41 @@ a {
   color: #2F4858 !important;
 }
 
-.content-container{
-  width: 80%;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 
 /* portfolio
 -------------------------------------------------- */
 
-
 .portfolio-text-container{
-  width: 45%;
   color: #111 !important;
 }
 
-.portfolio-image-container{
-  width: 50%;
-}
+.portfolio-image-container {}
 
 .portfolio-image-container img{
   width: 300px;
 }
 
-
 .portfolio-text-container h1{
   text-transform: lowercase;
-  padding: 10px 0px;
   font-size: 46px;
   line-height: 1.1em;
 }
 
 .portfolio-text-container h3{
   text-transform: lowercase;
-  padding: 0px 0px;
   font-size: 32px;
   color: #2F4858;
 }
 
 .portfolio-text-container p{
-  padding: 10px 0px;
   text-align: justify;
   font-weight: 600;
   color: #2F4858;
 }
 
 
-
 /* social icons
 -------------------------------------------------- */
-
 
 .social-media-container > .fa{
   margin-top: 10px;
@@ -130,48 +101,13 @@ a {
 }
 
 
-
-
 /* @media
 -------------------------------------------------- */
-
-
-@media screen and (max-width: 1050px) {
-  .navbar{
-    width: 94%
-  }
-  .content-container{
-    width: 94%
-  }
-}
-
 
 @media screen and (max-width: 760px) {
   .portfolio-text-container,
   .portfolio-image-container{
     width: 100%;
-  }
-  .content-container{
-    flex-direction: column-reverse;
-    margin-bottom: 40px;
-  }
-  .menu-btn-container{
-    display: block;
-  }
-  .nav-link{
-    position: absolute;
-    top: 100px;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: auto;
-    background: #2F4858;
-    z-index: 2;
   }
   .nav-link > a{
     padding: 30px;
@@ -180,11 +116,6 @@ a {
   }
   .nav-link > a:hover{
     background: #38EF7D;
-  }
-  #menu-btn{
-    cursor: pointer;
-    font-size: 40px;
-    color: #EAFFDA !important
   }
 
 }

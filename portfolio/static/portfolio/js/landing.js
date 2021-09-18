@@ -1,4 +1,4 @@
-gsap.from(".logo > h1", 0.9, {
+gsap.from(".logo > a", 0.9, {
   delay: 0.2,
   opacity: 0,
   x: -20,

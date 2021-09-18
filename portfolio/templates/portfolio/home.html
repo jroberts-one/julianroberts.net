@@ -4,18 +4,22 @@
 {% block content %}
     <div class="p-5 my-8 bg-light rounded-3">
         <div class="container py-5">
-            <div class="content-container">
-                <div class="portfolio-text-container">
-                    <h1>hi, my name is julian roberts</h1>
-                    <h3>i am a software engineer and data scienist</h3>
-                    <p>located in denver, co</p>
-                    <div class="social-media-container">
-                        <i class="fa fa-linkedin-square"></i>
-                        <i class="fa fa-github-square"></i>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="portfolio-image-container">
+                        <img class="img-fluid" src="{% static 'portfolio/img/logo.png' %}">
                     </div>
                 </div>
-                <div class="portfolio-image-container">
-                    <img class="img-fluid" src="{% static 'portfolio/img/logo.png' %}">
+                <div class="col-md-6">
+                    <div class="portfolio-text-container">
+                        <h1>hi, my name is julian roberts</h1>
+                        <h3>i am a data scienist and software engineer</h3>
+                        <p>located in denver, co</p>
+                        <div class="social-media-container">
+                            <i class="fa fa-linkedin-square"></i>
+                            <i class="fa fa-github-square"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
