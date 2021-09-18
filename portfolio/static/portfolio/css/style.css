@@ -62,12 +62,12 @@ a {
 .portfolio-image-container img {
   width: 300px;
   border-radius: 50%;
-  /*border: 5px solid #555;*/
 }
 
 .portfolio-text-container h1{
   font-size: 46px;
   line-height: 1.1em;
+  color: #2F4858;
 }
 
 .portfolio-text-container h3 {
@@ -86,13 +86,13 @@ a {
 -------------------------------------------------- */
 
 .social-icon {
-    height: 30px;
-    width: 30px;
+    height: 35px;
+    width: 35px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
-    font-size: 14px;
+    font-size: 20px;
     border-radius: 7px;
     margin-right: 11px;
     cursor: pointer
