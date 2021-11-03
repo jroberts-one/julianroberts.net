@@ -1,0 +1,99 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block content %}
+  <!--  -->
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css">
+  <!-- custom css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/recipe.css' %}">
+  <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+  <!--  -->
+  <h1>recipe hub</h1>
+  <hr>
+  <a class="btn btn-outline-dark my-3" href="{% url 'recipe-create' %}">add new recipe</a>
+  <table id="recipeList" class="table" style="width:100%">
+    <thead>
+      <tr>
+        <th scope="col">image</th>
+        <th scope="col">name</th>
+        <th scope="col">description</th>
+        <th scope="col">actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recipe in recipes %}
+        <tr>
+          <td><img src="{{ recipe.image.url }}"></td>
+          <td><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.name }}</a></td>
+          <td>{{ recipe.description }}</td>
+          <td>
+            {% if recipe.url %}
+              <a class="btn btn-outline-dark btn-sm m-1" href="{{ recipe.url }}" target="_blank">source</a>
+            {% endif %}
+            <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'recipe-update' recipe.id %}">edit</a>
+            <button type="button" class="btn btn-outline-danger btn-sm m-1 open-modal" data-url="{% url 'recipe-delete' recipe.id %}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              delete
+            </button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <br><br>
+  <br><br>
+
+<!-- modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">delete recipe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
+  <script type="text/javascript">
+
+  $(".open-modal").click(function() {
+
+    //alert( "1" );
+    url = $(this).attr("data-url");
+
+    $.ajax({
+      url: url,
+      success: function(data) {
+        $('#exampleModal .modal-body').html(data);
+        $(".confirm-del").click(function() {
+          $('form').submit()
+        });
+      },
+      error: function() {
+        alert("error");
+      }
+    });
+  });
+
+
+  $(document).ready(function() {
+    $("#recipeList").DataTable({
+      "lengthChange": false,
+      "order": [], //Initial no order.
+      "columnDefs": [{
+          "targets": [0, -1] /* column index */ ,
+          "orderable": false /* true or false */ ,
+          "searchable": false
+        },
+        {
+          "targets": 2,
+          "width": 200
+        }
+      ],
+    });
+  });
+  </script>
+{% endblock content %}

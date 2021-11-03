@@ -2,7 +2,8 @@
 
 *{
   padding: 0px;
-  margin: 0px;
+  /*margin: 0px;*/
+  margin: 0px, 0px, 200px, 0px;
   box-sizing: border-box;
   text-transform: lowercase;
 }
@@ -10,7 +11,8 @@
 body{
   padding: 0px;
   padding-top: 200px;
-  margin: 0px;
+  /*margin-bottom: 200px;*/
+  margin: 0px, 0px, 200px, 0px;
   font-family: "Poppins", sans-serif;
 }
 @media (max-width: 979px) {

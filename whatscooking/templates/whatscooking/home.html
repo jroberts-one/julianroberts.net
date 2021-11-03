@@ -1,17 +1,13 @@
 {% extends "portfolio/base.html" %}
 {% load static %}
 {% block content %}
-  <h1>recipe list</h1>
-  <a class="" href="{% url 'recipe-create' %}">add new recipe</a>
-  <br><br>
-  {% for recipe in recipes %}
-    <div class="">
-      <div class="">
-        <a class="">{{ recipe.author }}</a>
-        <small class="text-muted">{{ recipe.date_reciped|date:"F d, Y" }}</small>
-      </div>
-      <h2><a class="" href="{% url 'recipe-detail' recipe.id %}"> {{ recipe.name }}</a></h2>
-      <p class="">{{ recipe.description }}</p>
+  <h1>what's cooking?</h1>
+  <hr>
+  <div class="container">
+    <div class="list-group">
+      <a href="{% url 'recipe-home' %}" class="list-group-item list-group-item-action">recipes</a>
+      <a href="{% url 'ingredient-home' %}" class="list-group-item list-group-item-action">ingredients</a>
+      <a href="{% url 'measurement-home' %}" class="list-group-item list-group-item-action">measurements</a>
     </div>
-  {% endfor %}
+  </div>
 {% endblock content %}

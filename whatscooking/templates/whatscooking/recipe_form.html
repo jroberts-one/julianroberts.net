@@ -1,16 +1,103 @@
 {% extends "portfolio/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-        <form method="POST">
+    <!-- image and name header -->
+    {% if img_p %}
+        <h1 class="account-heading">{{ recipe.name }}</h2>
+        <img class="" src="{{ recipe.image.url }}" style="width: 300px;">
+    {% endif %}
+    <!--  -->
+    <div id="recipeId" class="d-none"></div>
+    <!-- __________________________________________ -->
+    <fieldset>
+        <legend class="border-bottom mb-4" >recipe info</legend>
+        <form method="post" enctype="multipart/form-data" >
             {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Recipe</legend>
-                {{ form | crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">submit</button>
+            {{ form | crispy }}
+            <a class="btn btn-outline-dark mr-2" href="{% url 'recipe-home' %}">back</a>
+            <button id="recipeFormSubmit" name="recipe" class="btn btn-outline-primary" type="submit">submit</button>
+        </form>
+    </fieldset>
+    <!-- __________________________________________ -->
+    <br><br>
+    <br><br>
+    <!-- __________________________________________ -->
+    <fieldset>
+        <legend class="border-bottom mb-4" >steps</legend>
+        <form id="recipeStepForm" method="post" action="">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="inputFormRow">
+                        <div class="input-group mb-3">
+                            <input type="number" class="form-control" placeholder="1" aria-label="1" >
+                            <textarea class="form-control" placeholder="enter step description" aria-label="enter step description"></textarea>
+                            <button class="btn btn-outline-danger removeRow" type="button">remove</button>
+                        </div>
+                    </div>
+                    <div id="newRow"></div>
+                    <button id="addRow" type="button" class="btn btn-outline-dark" >add step</button>
+                </div>
             </div>
         </form>
-    </div>
+    </fieldset>
+    <!-- __________________________________________ -->
+    <br><br>
+    <button id="testMe" type="button" class="btn btn-secondary">Eat ME</button>
+    <br><br>
+    <ul>
+        {% for step in step_list %}
+            <li>{{ step.order }} | {{ step.description }}</li>
+        {% endfor %}
+    </ul>
+    <br><br>
+
+
+<script type="text/javascript">
+    // add row
+    window.CSRF_TOKEN = "{{ csrf_token }}";
+    let steps = []
+
+    $("#addRow").click(function () {
+        var html = '';
+        html += '<div class="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html += '<input type="number" class="form-control" placeholder="1" aria-label="1" >';
+        html += '<textarea class="form-control" placeholder="enter step description" aria-label="enter step description"></textarea>';
+        html += '<button class="btn btn-outline-danger removeRow" type="button">remove</button>';
+        html += '</div>';
+        html += '</div>';
+        $('#newRow').append(html);
+    });
+
+    // remove row
+    $(document).on('click', '.removeRow', function () {
+        $(this).closest('.inputFormRow').remove();
+    });
+
+    $("#testMe").click(function () {
+        $( ".inputFormRow" ).each(function() {
+            order = $(this).find('input').val()
+            desc = $(this).find('textarea').val()
+            if (order != null && desc != null){
+                steps.push([order, desc])
+            }
+        });
+        console.log(steps)
+        // $.ajax({
+        //   type: "POST",
+        //   url: "",
+        //   data: {
+        //     csrfmiddlewaretoken: window.CSRF_TOKEN
+        //   },
+        //   success: function () {
+        //     $('#message').html("<h2>Contact Form Submitted!</h2>")
+        //   }
+        // });
+        // return false; //<---- move it here
+        // console.log(steps)
+    });
+
+</script>
+
 {% endblock content %}
