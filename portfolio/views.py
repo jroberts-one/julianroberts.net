@@ -25,6 +25,11 @@ class ContactFormView(FormView):
     form_class = ContactForm
     success_url = '/contact'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
     def form_valid(self, form):
         print('ContactFormView – form_valid() called')
         message = "{name} / {email} said: ".format(
@@ -41,6 +46,8 @@ class ContactFormView(FormView):
         )
         messages.add_message(self.request, messages.SUCCESS,
                              'your message has been sent!')
+
+        print(form)
         return super(ContactFormView, self).form_valid(form)
 
 

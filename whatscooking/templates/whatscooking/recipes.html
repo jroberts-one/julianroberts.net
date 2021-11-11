@@ -10,7 +10,7 @@
   <!--  -->
   <h1>recipe hub</h1>
   <hr>
-  <a class="btn btn-outline-dark my-3" href="{% url 'recipe-create' %}">add new recipe</a>
+  <a class="btn btn-outline-dark my-3" href="{% url 'whatscooking:recipe-create' %}">add new recipe</a>
   <table id="recipeList" class="table" style="width:100%">
     <thead>
       <tr>
@@ -24,14 +24,14 @@
       {% for recipe in recipes %}
         <tr>
           <td><img src="{{ recipe.image.url }}"></td>
-          <td><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.name }}</a></td>
+          <td><a href="{% url 'whatscooking:recipe-detail' recipe.id %}">{{ recipe.name }}</a></td>
           <td>{{ recipe.description }}</td>
           <td>
             {% if recipe.url %}
               <a class="btn btn-outline-dark btn-sm m-1" href="{{ recipe.url }}" target="_blank">source</a>
             {% endif %}
-            <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'recipe-update' recipe.id %}">edit</a>
-            <button type="button" class="btn btn-outline-danger btn-sm m-1 open-modal" data-url="{% url 'recipe-delete' recipe.id %}" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a class="btn btn-outline-dark btn-sm m-1" href="{% url 'whatscooking:recipe-update' recipe.id %}">edit</a>
+            <button type="button" class="btn btn-outline-danger btn-sm m-1 open-modal" data-url="{% url 'whatscooking:recipe-delete' recipe.id %}" data-bs-toggle="modal" data-bs-target="#exampleModal">
               delete
             </button>
           </td>
@@ -60,8 +60,6 @@
   <script type="text/javascript">
 
   $(".open-modal").click(function() {
-
-    //alert( "1" );
     url = $(this).attr("data-url");
 
     $.ajax({

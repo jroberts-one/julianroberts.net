@@ -1,31 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
 
-*{
-  padding: 0px;
-  /*margin: 0px;*/
-  margin: 0px, 0px, 200px, 0px;
-  box-sizing: border-box;
+body {
+  padding-top: 150px;
+  padding-bottom: 100px;
   text-transform: lowercase;
-}
-
-body{
-  padding: 0px;
-  padding-top: 200px;
-  /*margin-bottom: 200px;*/
-  margin: 0px, 0px, 200px, 0px;
-  font-family: "Poppins", sans-serif;
-}
-@media (max-width: 979px) {
-  body {
-    padding-top: 150px;
-  }
-}
-
-
-ul #navbarList {
-    list-style: none;
-    display: flex;
-    margin-bottom: 0
+  font-family: 'Poppins';
 }
 
 .asteriskField {
@@ -36,11 +15,20 @@ a {
   text-decoration: none;
 }
 
+/* portfolio
+-------------------------------------------------- */
+
+.portfolio-image-container img {
+  width: 300px;
+  border-radius: 50%;
+}
+
+
 /* navbar
 -------------------------------------------------- */
 
 .logo h1{
-  color: #2F4858;
+  color: #212529;
 }
 
 .nav-link > a{
@@ -53,37 +41,6 @@ a {
   color: #2F4858 !important;
 }
 
-
-/* portfolio
--------------------------------------------------- */
-
-.portfolio-text-container{
-  color: #111 !important;
-}
-
-.portfolio-image-container img {
-  width: 300px;
-  border-radius: 50%;
-}
-
-.portfolio-text-container h1{
-  font-size: 46px;
-  line-height: 1.1em;
-  color: #2F4858;
-}
-
-.portfolio-text-container h3 {
-  font-size: 32px;
-  color: #2F4858;
-}
-
-.portfolio-text-container p {
-  font-size: 1.50rem;
-  font-weight: 600;
-  color: #2F4858;
-}
-
-
 /* social icons
 -------------------------------------------------- */
 
@@ -95,7 +52,7 @@ a {
     align-items: center;
     color: #fff;
     font-size: 20px;
-    border-radius: 7px;
+    border-radius: 0.25rem;
     margin-right: 11px;
     cursor: pointer
 }

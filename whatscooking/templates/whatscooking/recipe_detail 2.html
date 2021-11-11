@@ -1,0 +1,44 @@
+{% extends "portfolio/base.html" %}
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            <h1><b>Recipe ID {{ object }}</b></h1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <!--for inline added steps-->
+                {% if object.has_steps %}
+                    {% for title in object.has_steps.all %}
+                        <tr>
+                            <th>{{title.description}}</th>
+                            <td>{{title.order}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                <!--end-->
+
+
+                {% if object.subject %}
+                    <tr>
+                        <th>Subject</th>
+                        <td>{{ object.subject }}</td>
+                    </tr>
+                {% endif %}
+                {% if object.owner %}
+                    <tr>
+                        <th>Owner</th>
+                        <td>{{ object.owner }}</td>
+                    </tr>
+                {% endif %}
+                {% if object.note %}
+                    <tr>
+                        <th>Note</th>
+                        <td>{{ object.note }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+            <a class="btn btn-outline-info" href="{% url 'whatscooking:recipe-update' pk=object.id %}">Update</a>
+            <a class="btn btn-outline-danger" href="{% url 'whatscooking:recipe-delete' pk=object.id %}">Delete</a>
+        </div>
+    </div>
+{% endblock content %}
