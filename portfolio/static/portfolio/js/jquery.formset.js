@@ -182,7 +182,7 @@
             // FIXME: Perhaps using $.data would be a better idea?
             options.formTemplate = template;
 
-            var addButtonHTML = '<a class="' + options.addCssClass + '" href="javascript:void(0)">' + options.addText + '</a>';
+            var addButtonHTML = '<a class="' + options.addCssClass + '" href="javascript:void(0)">' + 'add instruction' + '</a>';
             if (options.addContainerClass) {
                 // If we have a specific container for the "add" button,
                 // place it as the last child of that container:
@@ -234,12 +234,12 @@
     $.fn.formset.defaults = {
         prefix: 'form',                  // The form prefix for your django formset
         formTemplate: null,              // The jQuery selection cloned to generate new form instances
-        addText: 'add another',          // Text for the add link
-        deleteText: 'remove',            // Text for the delete link
+        addText: 'add another instruction',          // Text for the add link
+        deleteText: 'remove me',            // Text for the delete link
         addContainerClass: null,         // Container CSS class for the add link
         deleteContainerClass: null,      // Container CSS class for the delete link
-        addCssClass: 'add-row',          // CSS class applied to the add link
-        deleteCssClass: 'delete-row',    // CSS class applied to the delete link
+        addCssClass: 'add-row btn btn-outline-primary',          // CSS class applied to the add link
+        deleteCssClass: 'delete-row btn btn-outline-danger mt-3',    // CSS class applied to the delete link
         formCssClass: 'dynamic-form',    // CSS class applied to each form in a formset
         extraClasses: [],                // Additional CSS classes, which will be applied to each form in turn
         keepFieldValues: '',             // jQuery selector for fields whose values should be kept when the form is cloned

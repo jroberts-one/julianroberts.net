@@ -1,10 +1,62 @@
 {% extends "portfolio/base.html" %}
 {% block content %}
-  <h1>{{ object.name }}</h1>
-  {% if object.author == user %}
-    <div>
-      <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'whatscooking:recipe-update' object.id %}">Update</a>
-      <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'whatscooking:recipe-delete' object.id %}">Delete</a>
+    <style type="text/css">
+    img {
+      width: 300px;
+      height: 300px;
+      padding:  30px;
+    }
+    </style>
+    <h1>{{ context }}</h1>
+    <div class="card">
+        <div class="card-header">
+            <h1><a target="_blank" href="{{ recipe.url }}">{{ recipe.name }}</a></h1>
+        </div>
+        <img class="" src="{{ recipe.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <table class="table table-borderless">
+                <thead>
+                    <tr class="d-flex">
+                        <th class="col-3"></th>
+                        <th class="col-9"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if recipe.description %}
+                        <tr class="d-flex">
+                            <th class="col-sm-3">description</th>
+                            <td class="col-sm-9">{{ recipe.description }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if recipe.cook_time %}
+                        <tr class="d-flex">
+                            <th class="col-sm-3">cook time</th>
+                            <td class="col-sm-9">{{ recipe.cook_time }}</td>
+                        </tr>
+                    {% endif %}
+                    {% if recipe.serving_size %}
+                        <tr class="d-flex">
+                            <th class="col-sm-3">serving size</th>
+                            <td class="col-sm-9">{{ recipe.serving_size }}</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <!--for inline added steps-->
+            {% if object.has_steps %}
+            <hr>
+            <h3>instructions</h3>
+                {% for step in object.has_steps.all %}
+                    <ul class="my-3">
+                        <li>{{step.order}} – {{step.description}}</li>
+                    </ul>
+                {% endfor %}
+            {% endif %}
+            <!--end-->
+            <br>
+            <a class="btn btn-outline-dark mr-2" href="{% url 'whatscooking:recipe-home' %}">home</a>
+            <a class="btn btn-outline-dark" href="{% url 'whatscooking:recipe-update' pk=object.id %}">edit</a>
+            <!-- <a class="btn btn-outline-danger" href="{% url 'whatscooking:recipe-delete' pk=object.id %}">delete</a> -->
+        </div>
     </div>
-  {% endif %}
 {% endblock content %}

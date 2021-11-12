@@ -5,6 +5,7 @@ from crispy_bootstrap5.bootstrap5 import FloatingField
 from captcha.fields import ReCaptchaField
 from captcha.widgets import ReCaptchaV2Checkbox
 
+
 class ContactForm(forms.Form):
     full_name = forms.CharField(label='full name')
     email = forms.EmailField(label='email', max_length=150)
@@ -15,11 +16,11 @@ class ContactForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
-        self.helper = FormHelper()
-        self.helper.attrs = {'novalidate': ''}
-        self.helper.attrs = {'id': 'contactform'}
+        self.helper = FormHelper(self)
+        self.helper.attrs = {"novalidate": '', 'id': 'contactform'}
+        self.helper.form_tag = True
         self.fields['captcha'].label = False
+        self.fields['captcha'].required = True
         self.helper.layout = Layout(
             FloatingField("full_name"),
             FloatingField("email"),

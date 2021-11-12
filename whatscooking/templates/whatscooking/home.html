@@ -1,13 +1,11 @@
 {% extends "portfolio/base.html" %}
 {% load static %}
 {% block content %}
-  <h1>what's cooking?</h1>
-  <hr>
   <div class="container">
+    <h1 class="font-weight-light text-center text-muted py-3">what's cooking?</h1>
+    <hr>
     <div class="list-group">
       <a href="{% url 'whatscooking:recipe-home' %}" class="list-group-item list-group-item-action">recipes</a>
-      <a href="{% url 'whatscooking:ingredient-home' %}" class="list-group-item list-group-item-action">ingredients</a>
-      <a href="{% url 'whatscooking:measurement-home' %}" class="list-group-item list-group-item-action">measurements</a>
     </div>
   </div>
 {% endblock content %}

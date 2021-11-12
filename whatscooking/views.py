@@ -19,15 +19,20 @@ from django.urls import reverse_lazy
 from django.db import transaction
 
 
-class HomeView(TemplateView):
+# ----------------------------------
+# Home
+# ----------------------------------
+class HomeView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'whatscooking/home.html'
 
+    def test_func(self):
+        return self.request.user.is_superuser
 
-##########################################################################
-#                           recipe views                             #
-##########################################################################
 
-class RecipeListView(TemplateView):
+# ----------------------------------
+# Recipes
+# ----------------------------------
+class RecipeList(LoginRequiredMixin, TemplateView):
     template_name = "whatscooking/recipes.html"
 
     def get_context_data(self, **kwargs):
@@ -36,42 +41,35 @@ class RecipeListView(TemplateView):
         return context
 
 
-class RecipeDetailView(DetailView):
+class RecipeDetail(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'whatscooking/recipe_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(RecipeDetailView, self).get_context_data(**kwargs)
+        context = super(RecipeDetail, self).get_context_data(**kwargs)
+        print(context)
         return context
 
 
-class RecipeCreate(CreateView):
+class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
-    template_name = 'whatscooking/recipe_create.html'
     form_class = RecipeForm
     success_url = None
-    logging.debug('RecipeCreate started!')
-
+    template_name = 'whatscooking/recipe_create.html'
 
     def get_context_data(self, **kwargs):
-        logging.debug('aaa – get_context_data')
-
-
         data = super(RecipeCreate, self).get_context_data(**kwargs)
+        data['title'] = "create"
         if self.request.POST:
             data['steps'] = RecipeStepFormSet(self.request.POST)
         else:
             data['steps'] = RecipeStepFormSet()
-
-        logging.debug('bbb – get_context_data')
-        logging.debug(data)
+        print(data)
         return data
 
-
-
-
     def form_valid(self, form):
-        logging.debug('RecipeCreate form_valid')
+        # set the author field
+        form.instance.author = self.request.user
 
         context = self.get_context_data()
         steps = context['steps']
@@ -87,13 +85,14 @@ class RecipeCreate(CreateView):
         return reverse_lazy('whatscooking:recipe-detail', kwargs={'pk': self.object.pk})
 
 
-class RecipeUpdate(UpdateView):
+class RecipeUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'whatscooking/recipe_create.html'
 
     def get_context_data(self, **kwargs):
         data = super(RecipeUpdate, self).get_context_data(**kwargs)
+        data['title'] = "update"
         if self.request.POST:
             data['steps'] = RecipeStepFormSet(
                 self.request.POST, instance=self.object)
@@ -112,17 +111,17 @@ class RecipeUpdate(UpdateView):
                 steps.save()
         return super(RecipeUpdate, self).form_valid(form)
 
+    def test_func(self):
+        post = self.get_object()
+        if self.request.user == post.author:
+            return True
+        return False
+
     def get_success_url(self):
         return reverse_lazy('whatscooking:recipe-detail', kwargs={'pk': self.object.pk})
 
 
 class RecipeDelete(DeleteView):
-    model = Recipe
-    template_name = 'whatscooking/confirm_delete.html'
-    success_url = reverse_lazy('whatscooking:recipe-home')
-
-
-class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Recipe
     success_url = '/whatscooking/recipes/'
 
@@ -131,71 +130,3 @@ class RecipeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == Recipe.author:
             return True
         return False
-
-
-
-# ----------------------------------
-# Ingredients
-# ----------------------------------
-
-
-class IngredientListView(ListView):
-    model = Ingredient
-    template_name = 'whatscooking/ingredients.html'
-    context_object_name = 'ingredients'
-
-
-class IngredientDetailView(DetailView):
-    model = Ingredient
-
-
-class IngredientCreateView(LoginRequiredMixin, CreateView):
-    model = Ingredient
-    fields = ['name', 'image']
-    success_url = '/whatscooking/ingredients/'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-
-class IngredientUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Ingredient
-    fields = ['name', 'image']
-    success_url = '/whatscooking/ingredients/'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
-
-    def test_func(self):
-        Recipe = self.get_object()
-        if self.request.user == Ingredient.author:
-            return True
-        return False
-
-
-class IngredientDeleteView(DeleteView):
-    model = Ingredient
-    success_url = '/whatscooking/ingredients/'
-
-    def test_func(self):
-        Recipe = self.get_object()
-        if self.request.user == Ingredient.author:
-            return True
-        return False
-
-
-# ----------------------------------
-
-
-class MeasurementListView(ListView):
-    template_name = 'whatscooking/measurements.html'
-    model = MeasurementUnit
-
-    def get_context_data(self, **kwargs):
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Add in a QuerySet of all the books
-        context['book_list'] = MeasurementQuantity.objects.all()
-        return context

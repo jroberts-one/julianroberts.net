@@ -1,5 +1,5 @@
 <div class="content-section">
-    <form method="POST" action="{% url 'recipe-delete' recipe.id %}">
+    <form method="POST" action="{% url 'whatscooking:recipe-delete' recipe.id %}">
         {% csrf_token %}
         <fieldset class="form-group">
             <h5>Are you sure you want to delete the post "{{ object.name }}"</h5>
