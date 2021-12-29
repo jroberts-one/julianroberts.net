@@ -23,6 +23,7 @@ from django.db import transaction
 # Home
 # ----------------------------------
 class HomeView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+
     template_name = 'whatscooking/home.html'
 
     def test_func(self):
@@ -30,7 +31,7 @@ class HomeView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 
 # ----------------------------------
-# Recipes
+# List Views
 # ----------------------------------
 class RecipeList(LoginRequiredMixin, TemplateView):
     template_name = "whatscooking/recipes.html"
@@ -41,16 +42,39 @@ class RecipeList(LoginRequiredMixin, TemplateView):
         return context
 
 
+class IngredientList(LoginRequiredMixin, TemplateView):
+    template_name = "whatscooking/ingredients.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['ingredients'] = Ingredient.objects.order_by('id')
+        return context
+
+
+# ----------------------------------
+# Detail Views
+# ----------------------------------
 class RecipeDetail(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'whatscooking/recipe_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(RecipeDetail, self).get_context_data(**kwargs)
-        print(context)
         return context
 
 
+class IngredientDetail(LoginRequiredMixin, DetailView):
+    model = Ingredient
+    template_name = 'whatscooking/ingredient_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(IngredientDetail, self).get_context_data(**kwargs)
+        return context
+
+
+# ----------------------------------
+# Create Views
+# ----------------------------------
 class RecipeCreate(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
@@ -70,7 +94,6 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # set the author field
         form.instance.author = self.request.user
-
         context = self.get_context_data()
         steps = context['steps']
         with transaction.atomic():
@@ -85,6 +108,20 @@ class RecipeCreate(LoginRequiredMixin, CreateView):
         return reverse_lazy('whatscooking:recipe-detail', kwargs={'pk': self.object.pk})
 
 
+class IngredientCreate(LoginRequiredMixin, CreateView):
+    model = Ingredient
+    fields = ['name', 'image']
+    success_url = '/whatscooking/ingredients/'
+    template_name = 'whatscooking/ingredient_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
+# ----------------------------------
+# Update Views
+# ----------------------------------
 class RecipeUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Recipe
     form_class = RecipeForm
@@ -121,6 +158,26 @@ class RecipeUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return reverse_lazy('whatscooking:recipe-detail', kwargs={'pk': self.object.pk})
 
 
+class IngredientUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Ingredient
+    fields = ['name', 'image']
+    success_url = '/whatscooking/ingredients/'
+    template_name = 'whatscooking/ingredient_create.html'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        Ingredient = self.get_object()
+        # if self.request.user == Ingredient.author:
+        #     return True
+        return True
+
+
+# ----------------------------------
+# Update Views
+# ----------------------------------
 class RecipeDelete(DeleteView):
     model = Recipe
     success_url = '/whatscooking/recipes/'
@@ -128,5 +185,16 @@ class RecipeDelete(DeleteView):
     def test_func(self):
         Recipe = self.get_object()
         if self.request.user == Recipe.author:
+            return True
+        return False
+
+
+class IngredientDelete(DeleteView):
+    model = Ingredient
+    success_url = '/whatscooking/ingredients/'
+
+    def test_func(self):
+        Ingredient = self.get_object()
+        if self.request.user == Ingredient.author:
             return True
         return False

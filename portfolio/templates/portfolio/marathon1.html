@@ -1,0 +1,251 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static 'portfolio/css/marathon.css' %}">
+    <div class="container">
+        <h1>2022 Marathon</h1>
+        <br>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-floating">
+                    <select class="form-select" id="unitSelect" aria-label="unit select">
+                        <option selected value="imperial">miles</option>
+                        <option value="metric">kilometers</option>
+                    </select>
+                    <label for="unitSelect">&nbsp;units</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 my-4">
+                <div class="table-responsive">
+                    <table id="trainingTable" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Date</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td class="subHeader" colspan="10">Endurance</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>12/13</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">9</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>12/20</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">10</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">13</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>12/27</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">10</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">14</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>1/03</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">10</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">15</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>1/10</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">9</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">10</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">16</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>12 (r)</td>
+                                <td>1/17</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">LT + Endurance</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>1/24</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>1/31</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>02/07</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>1/24</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>1/24</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">Race Preparation</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>11/01</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">11</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">13</span></td>
+                                <td><span class="distance">17</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>11/08</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">7</span></td>
+                                <td><span class="distance">10</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">11</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">20</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>11/15</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td><span class="distance">11</span></td>
+                                <td><span class="distance">16</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr >
+                                <td class="subHeader" colspan="10">Taper and Race</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>11/22</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">7</span></td>
+                                <td><span class="distance">8</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">12</span></td>
+                                <td class="total"></td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>11/29</td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">6</span></td>
+                                <td><span class="distance">7</span></td>
+                                <td><span class="distance">0</span></td>
+                                <td><span class="distance">5</span></td>
+                                <td><span class="distance">4</span></td>
+                                <td class="goal">Marathon</td>
+                                <td class="total"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+
+    <script type="text/javascript" src="{% static 'portfolio/js/marathon.js' %}"></script>
+{% endblock content %}

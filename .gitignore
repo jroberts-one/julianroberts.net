@@ -126,3 +126,5 @@ media/
 secret_key.txt
 jrnet_uwsgi.ini
 uwsgi_params
+
+static

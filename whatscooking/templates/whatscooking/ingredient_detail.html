@@ -1,0 +1,21 @@
+{% extends "portfolio/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'whatscooking/css/ingredient.css' %}">
+    <h1>{{ context }}</h1>
+    <div class="card">
+        <div class="card-header">
+            <h1>
+            {{ ingredient.name }}
+            </h1>
+        </div>
+        <img class="" src="{{ ingredient.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <br>
+            <a class="btn btn-outline-dark mr-2" href="{% url 'whatscooking:ingredient-home' %}">home</a>
+            <a class="btn btn-outline-dark" href="{% url 'whatscooking:ingredient-update' pk=object.id %}">edit</a>
+            <!-- <a class="btn btn-outline-danger" href="{% url 'whatscooking:ingredient-delete' pk=object.id %}">delete</a> -->
+        </div>
+    </div>
+{% endblock content %}

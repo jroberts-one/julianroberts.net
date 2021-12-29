@@ -6,8 +6,6 @@ from django.views.generic import (
     FormView
 )
 from .forms import ContactForm
-
-from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib import messages
 
@@ -28,7 +26,6 @@ class ContactFormView(FormView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         return context
-
 
     def form_valid(self, form):
         print('ContactFormView – form_valid() called')
@@ -51,8 +48,15 @@ class ContactFormView(FormView):
         return super(ContactFormView, self).form_valid(form)
 
 
-class MarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+class TXMarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'portfolio/marathon.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+class COMarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+    template_name = 'portfolio/marathon1.html'
 
     def test_func(self):
         return self.request.user.is_superuser

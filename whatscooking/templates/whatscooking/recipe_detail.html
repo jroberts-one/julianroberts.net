@@ -1,16 +1,18 @@
 {% extends "portfolio/base.html" %}
+{% load static %}
 {% block content %}
-    <style type="text/css">
-    img {
-      width: 300px;
-      height: 300px;
-      padding:  30px;
-    }
-    </style>
+    <!-- custom css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'whatscooking/css/recipe.css' %}">
     <h1>{{ context }}</h1>
     <div class="card">
         <div class="card-header">
-            <h1><a target="_blank" href="{{ recipe.url }}">{{ recipe.name }}</a></h1>
+            <h1>
+            {% if recipe.url %}
+                <a target="_blank" href="{{ recipe.url }}">{{ recipe.name }}</a>
+            {% else %}
+                {{ recipe.name }}
+            {% endif %}
+            </h1>
         </div>
         <img class="" src="{{ recipe.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -44,8 +46,8 @@
             </table>
             <!--for inline added steps-->
             {% if object.has_steps %}
-            <hr>
-            <h3>instructions</h3>
+                <hr>
+                <h3>instructions</h3>
                 {% for step in object.has_steps.all %}
                     <ul class="my-3">
                         <li>{{step.order}} – {{step.description}}</li>

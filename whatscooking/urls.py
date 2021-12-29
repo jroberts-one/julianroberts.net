@@ -15,4 +15,15 @@ urlpatterns = [
          RecipeUpdate.as_view(), name='recipe-update'),
     path('recipe/delete/<int:pk>/',
          RecipeDelete.as_view(), name='recipe-delete'),
+    #
+    path('ingredients/', IngredientList.as_view(),
+         name='ingredient-home'),
+    path('ingredient/<int:pk>/', IngredientDetail.as_view(),
+         name='ingredient-detail'),
+    path('ingredient/create/', IngredientCreate.as_view(),
+         name='ingredient-create'),
+    path('ingredient/update/<int:pk>/',
+         IngredientUpdate.as_view(), name='ingredient-update'),
+    path('ingredient/delete/<int:pk>/',
+         IngredientDelete.as_view(), name='ingredient-delete'),
 ]

@@ -7,7 +7,7 @@ from django.core.validators import URLValidator
 
 class Recipe(models.Model):
     image = models.ImageField(
-        default='default_recipe.png', upload_to='recipe_pics', blank=True)
+        default='default_recipe.png', upload_to='recipe_pics')
     name = models.CharField(max_length=300)
     description = models.TextField(blank=True)
     cook_time = models.CharField(max_length=20, null=True, blank=True)
@@ -23,6 +23,23 @@ class Recipe(models.Model):
 
     def get_absolute_url(self):
         return reverse('recipe-detail', kwargs={'pk': self.pk})
+
+
+class Ingredient(models.Model):
+    image = models.ImageField(
+        default='default_ingredient.png', upload_to='ingredient_pics')
+    name = models.CharField(max_length=300)
+
+    def __str__(self):
+        return str(self.id)
+
+    def get_absolute_url(self):
+        return reverse('ingredient-detail', kwargs={'pk': self.pk})
+
+
+class RecipeIngredient(models.Model):
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE)
+    ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE)
 
 
 class RecipeStep(models.Model):
