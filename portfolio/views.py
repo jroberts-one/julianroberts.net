@@ -46,17 +46,3 @@ class ContactFormView(FormView):
 
         print(form)
         return super(ContactFormView, self).form_valid(form)
-
-
-class TXMarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
-    template_name = 'portfolio/marathon.html'
-
-    def test_func(self):
-        return self.request.user.is_superuser
-
-
-class COMarathonView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
-    template_name = 'portfolio/marathon1.html'
-
-    def test_func(self):
-        return self.request.user.is_superuser

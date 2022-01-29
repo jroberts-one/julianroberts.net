@@ -39,7 +39,7 @@ urlpatterns = [
         template_name='users/password_reset_complete.html'), name='password_reset_complete'),
 
     path('', include('portfolio.urls'), name='portfolio-home'),
-    path('whatscooking/', include('whatscooking.urls'), name='whatscooking-home'),
+    path('health/', include('health.urls'), name='health-home'),
 ]
 
 
